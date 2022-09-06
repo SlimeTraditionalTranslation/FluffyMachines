@@ -54,7 +54,7 @@ public class Dolly extends SimpleSlimefunItem<ItemUseHandler> {
             Player p = e.getPlayer();
 
             if (timeouts.containsKey(p) && timeouts.get(p) + DELAY > System.currentTimeMillis()) {
-                Utils.send(p, "&cPlease wait before using the dolly again!");
+                Utils.send(p, "&c請稍候再使用搬運器!");
                 return;
             }
 
