@@ -144,7 +144,7 @@ public class PortableCharger extends SimpleSlimefunItem<ItemUseHandler> implemen
                         // Check if player left an item inside
                         if (forgottenItem != null) {
                             Utils.send(p, "&c嘿! 你在充電器內遺留了一些東西! 現在落下了...");
-                            p.getWorld().dropItemNaturally(p.getLocation(), forgottenItem);
+                            Utils.giveOrDropItem(p, forgottenItem);
                         }
                     }
                 }
@@ -209,8 +209,8 @@ public class PortableCharger extends SimpleSlimefunItem<ItemUseHandler> implemen
         LARGE(8192, 512),
         CARBONADO(65526, 4096);
 
-        public int chargeCapacity;
-        public int chargeSpeed;
+        public final int chargeCapacity;
+        public final int chargeSpeed;
 
     }
 }
