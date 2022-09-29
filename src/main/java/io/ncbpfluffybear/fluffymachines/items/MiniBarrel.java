@@ -38,31 +38,31 @@ public class MiniBarrel extends Barrel {
     protected void buildMenu(BlockMenu menu, Block b) {
         super.buildMenu(menu, b);
         menu.replaceExistingItem(13, new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,
-                "&eChange barrel size", "&7> Click to change max size", "&eCurrent size: " + getCapacity(b),
-                "&eSize limit: " + barrelCapacity.getValue()
+                "&e改變木桶大小", "&7> 點擊改變最大大小", "&e目前大小: " + getCapacity(b),
+                "&e大小限制: " + barrelCapacity.getValue()
         ));
         menu.addMenuClickHandler(13, (p, slot, item, action) -> {
             p.closeInventory();
-            Utils.send(p, "&eType the new size of the barrel. Max size: " + barrelCapacity.getValue());
+            Utils.send(p, "&e輸入木桶的新大小. 最大大小: " + barrelCapacity.getValue());
             ChatUtils.awaitInput(p, message -> {
                 int renameSize = NumberUtils.getInt(message, 0);
 
                 if (renameSize == 0 || renameSize > barrelCapacity.getValue()) {
-                    Utils.send(p, "&cThe new size must be between 0 and " + barrelCapacity.getValue());
+                    Utils.send(p, "&c新的大小必須介於 0 到 " + barrelCapacity.getValue());
                     return;
                 }
 
                 if (renameSize < getStored(b)) {
-                    Utils.send(p, "&cRemove items from the barrel before changing it to this size!");
+                    Utils.send(p, "&c在將其改為此大小之前, 請先將木桶內的物品取出!");
                     return;
                 }
 
                 BlockStorage.addBlockInfo(b, "max-size", String.valueOf(renameSize));
                 menu.replaceExistingItem(13, new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,
-                        "&eChange barrel size", "&7> Click to change max size", "&eCurrent size: " + renameSize,
-                        "&eSize limit: " + barrelCapacity.getValue()
+                        "&e改變木桶大小", "&7> 點擊改變最大大小", "&e目前大小: " + renameSize,
+                        "&e大小限制: " + barrelCapacity.getValue()
                 ));
-                Utils.send(p, "&aMax size has been changed to " + renameSize);
+                Utils.send(p, "&a最大大小已改變為 " + renameSize);
                 updateMenu(b, menu, true, renameSize);
             });
             return false;

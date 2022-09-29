@@ -1,10 +1,10 @@
 package io.ncbpfluffybear.fluffymachines;
 
+import io.github.bakedlibs.dough.updater.GitHubBuildsUpdater;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
 import io.ncbpfluffybear.fluffymachines.listeners.KeyedCrafterListener;
 import io.ncbpfluffybear.fluffymachines.utils.Constants;
 import io.ncbpfluffybear.fluffymachines.utils.Events;
@@ -22,7 +22,7 @@ import java.util.logging.Level;
 import javax.annotation.Nonnull;
 import lombok.SneakyThrows;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import org.bstats.bukkit.Metrics;
+//import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -51,8 +51,8 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
         // Read something from your config.yml
         Config cfg = new Config(this);
 
-        if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("DEV - ")) {
-            new GitHubBuildsUpdater(this, getFile(), "NCBPFluffyBear/FluffyMachines/master/").start();
+        if (cfg.getBoolean("options.auto-update") && getDescription().getVersion().startsWith("EFI - ")) {
+            new GitHubBuildsUpdater(this, getFile(), "SlimeTraditionalTranslation/FluffyMachines/master/").start();
         }
 
         // Register Glow
@@ -121,12 +121,14 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
         getServer().getPluginManager().registerEvents(new Events(), this);
         getServer().getPluginManager().registerEvents(new KeyedCrafterListener(), this);
 
-        final Metrics metrics = new Metrics(this, 8927);
+        //final Metrics metrics = new Metrics(this, 8927);
 
-        getLogger().log(Level.INFO, ChatColor.GREEN + "Hi there! Want to share your server with the " +
-                "Slimefun community?");
-        getLogger().log(Level.INFO, ChatColor.GREEN + "Join the official Slimefun Discord server at " +
+        getLogger().log(Level.INFO, ChatColor.GREEN + "Hi 你好! 想要分享你的伺服器到" +
+                "Slimefun社群?");
+        getLogger().log(Level.INFO, ChatColor.GREEN + "加入官方 Slimefun Discord 伺服器 " +
                 "https://discord.gg/slimefun");
+        getLogger().log(Level.WARNING, ChatColor.RED + "此為繁體翻譯版 非官方版本" +
+                "勿在黏液科技伺服器官方問!");
     }
 
     @Override
@@ -223,7 +225,7 @@ public class FluffyMachines extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public String getBugTrackerURL() {
-        return "https://github.com/NCBPFluffyBear/FluffyMachines/issues";
+        return "https://github.com/SlimeTraditionalTranslation/FluffyMachines/issues";
     }
 
     @Nonnull

@@ -64,12 +64,12 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
     public static final DecimalFormat STORAGE_INDICATOR_FORMAT = new DecimalFormat("###,###.####",
             DecimalFormatSymbols.getInstance(Locale.ROOT));
 
-    private final ItemStack HOLOGRAM_OFF_ITEM = new CustomItemStack(Material.QUARTZ_SLAB, "&3Toggle Hologram &c(Off)");
-    private final ItemStack HOLOGRAM_ON_ITEM = new CustomItemStack(Material.QUARTZ_SLAB, "&3Toggle Hologram &a(On)");
-    private final ItemStack TRASH_ON_ITEM = new CustomItemStack(SlimefunItems.TRASH_CAN, "&3Toggle Overfill Trash &a(On)",
-            "&7Turn on to delete unstorable items");
-    private final ItemStack TRASH_OFF_ITEM = new CustomItemStack(SlimefunItems.TRASH_CAN, "&3Toggle Overfill Trash &c(Off)",
-            "&7Turn on to delete unstorable items"
+    private final ItemStack HOLOGRAM_OFF_ITEM = new CustomItemStack(Material.QUARTZ_SLAB, "&3開關浮空文字 &c(關)");
+    private final ItemStack HOLOGRAM_ON_ITEM = new CustomItemStack(Material.QUARTZ_SLAB, "&3開關浮空文字 &a(開)");
+    private final ItemStack TRASH_ON_ITEM = new CustomItemStack(SlimefunItems.TRASH_CAN, "&3開關溢出垃圾 &a(開)",
+            "&7開啟以刪除無法儲存的物品");
+    private final ItemStack TRASH_OFF_ITEM = new CustomItemStack(SlimefunItems.TRASH_CAN, "&3開關溢出垃圾 &c(關)",
+            "&7開啟以刪除無法儲存的物品"
     );
 
     private final ItemSetting<Boolean> showHologram = new ItemSetting<>(this, "show-hologram", true);
@@ -144,7 +144,7 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
                     int itemCount = 0;
 
                     if (breakOnlyWhenEmpty.getValue() && stored != 0) {
-                        Utils.send(p, "&cThis barrel can't be broken since it has items inside it!");
+                        Utils.send(p, "&c這個木桶不能被破壞, 因為它裡面還存有物品!");
                         e.setCancelled(true);
                         return;
                     }
@@ -156,7 +156,7 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
                     }
 
                     if (itemCount > 5) {
-                        Utils.send(p, "&cPlease remove nearby items before breaking this barrel!");
+                        Utils.send(p, "&c在打破此木桶之前, 請先移除附近的物品!");
                         e.setCancelled(true);
                         return;
                     }
@@ -176,8 +176,8 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
 
                         if (stored > OVERFLOW_AMOUNT) {
 
-                            Utils.send(p, "&eThere are more than " + OVERFLOW_AMOUNT + " items in this barrel! " +
-                                    "Dropping " + OVERFLOW_AMOUNT + " items instead!");
+                            Utils.send(p, "&e此木桶內有超過 " + OVERFLOW_AMOUNT + " 個物品! " +
+                                    "掉落 " + OVERFLOW_AMOUNT + " 個替代物品!");
                             int toRemove = OVERFLOW_AMOUNT;
                             while (toRemove >= stackSize) {
 
@@ -236,13 +236,13 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
         if (BlockStorage.getLocationInfo(b.getLocation(), "stored") == null) {
 
             menu.replaceExistingItem(STATUS_SLOT, new CustomItemStack(
-                    Material.LIME_STAINED_GLASS_PANE, "&6Items Stored: &e0" + " / " + capacity, "&70%"));
-            menu.replaceExistingItem(DISPLAY_SLOT, new CustomItemStack(Material.BARRIER, "&cEmpty"));
+                    Material.LIME_STAINED_GLASS_PANE, "&6儲存物品: &e0" + " / " + capacity, "&70%"));
+            menu.replaceExistingItem(DISPLAY_SLOT, new CustomItemStack(Material.BARRIER, "&c空"));
 
             setStored(b, 0);
 
             if (showHologram.getValue()) {
-                updateHologram(b, null, "&cEmpty");
+                updateHologram(b, null, "&c空");
             }
 
             // Change hologram settings
@@ -281,8 +281,8 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
         // Insert all
         int INSERT_ALL_SLOT = 43;
         menu.replaceExistingItem(INSERT_ALL_SLOT,
-                new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&bInsert All",
-                        "&7> Click here to insert all", "&7compatible items into the barrel"));
+                new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&b放入全部",
+                        "&7> 點此放入全部", "&7兼容的物品進入木桶"));
         menu.addMenuClickHandler(INSERT_ALL_SLOT, (pl, slot, item, action) -> {
             insertAll(pl, menu, b);
             return false;
@@ -291,9 +291,9 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
         // Extract all
         int EXTRACT_SLOT = 44;
         menu.replaceExistingItem(EXTRACT_SLOT,
-                new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6Extract All",
-                        "&7> Left click to extract", "&7all items to your inventory",
-                        "&7> Right click to extract 1 item"
+                new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&6提取全部",
+                        "&7> 左鍵點擊提取", "&7所有物品至你的背包",
+                        "&7> 右鍵點擊提取一個物品"
                 ));
         menu.addMenuClickHandler(EXTRACT_SLOT, (pl, slot, item, action) -> {
             extract(pl, menu, b, action);
@@ -456,8 +456,8 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
         // This helps a bit with lag, but may have visual impacts
         if (inv.hasViewer() || force) {
             inv.replaceExistingItem(STATUS_SLOT, new CustomItemStack(
-                    Material.LIME_STAINED_GLASS_PANE, "&6Items Stored: &e" + stored + " / " + capacity,
-                    "&b" + storedStacks + " Stacks &8| &7" + storedPercent + "&7%"));
+                    Material.LIME_STAINED_GLASS_PANE, "&6儲存物品: &e" + stored + " / " + capacity,
+                    "&b" + storedStacks + " 組 &8| &7" + storedPercent + "&7%"));
         }
 
         if (inv.getItemInSlot(DISPLAY_SLOT) != null && inv.getItemInSlot(DISPLAY_SLOT).getItemMeta().hasDisplayName()) {
@@ -471,9 +471,9 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
         }
 
         if (stored == 0) {
-            inv.replaceExistingItem(DISPLAY_SLOT, new CustomItemStack(Material.BARRIER, "&cEmpty"));
+            inv.replaceExistingItem(DISPLAY_SLOT, new CustomItemStack(Material.BARRIER, "&c空"));
             if (showHologram.getValue() && (hasHolo == null || hasHolo.equals("true"))) {
-                updateHologram(b, null, "&cEmpty");
+                updateHologram(b, null, "&c空");
             }
         }
     }
@@ -560,12 +560,12 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
                     }
                 }
             }
-            Utils.send(p, "&cThis barrel is empty!");
+            Utils.send(p, "&c這個木桶是空的!");
             return;
         }
 
         if (storedItem.getType() == Material.BARRIER) {
-            Utils.send(p, "&cThis barrel is empty!");
+            Utils.send(p, "&c這個木桶是空的!");
             return;
         }
 
@@ -654,12 +654,12 @@ public class Barrel extends NonHopperableBlock implements DoubleHologramOwner {
 
     public enum BarrelType {
 
-        SMALL(17280000, "&eSmall Fluffy Barrel", Material.BEEHIVE, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.OAK_LOG)),
-        MEDIUM(34560000, "&6Medium Fluffy Barrel", Material.BARREL, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.SMOOTH_STONE)),
-        BIG(69120000, "&bBig Fluffy Barrel", Material.SMOKER, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.BRICKS)),
-        LARGE(138240000, "&aLarge Fluffy Barrel", Material.LODESTONE, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.IRON_BLOCK)),
-        MASSIVE(276480000, "&5Massive Fluffy Barrel", Material.CRYING_OBSIDIAN, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.OBSIDIAN)),
-        BOTTOMLESS(1728000000, "&cBottomless Fluffy Barrel", Material.RESPAWN_ANCHOR, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.REINFORCED_PLATE);
+        SMALL(17280000, "&e小型 Fluffy木桶", Material.BEEHIVE, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.OAK_LOG)),
+        MEDIUM(34560000, "&6中型 Fluffy木桶", Material.BARREL, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.SMOOTH_STONE)),
+        BIG(69120000, "&b大型 Fluffy木桶", Material.SMOKER, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.BRICKS)),
+        LARGE(138240000, "&a巨型 Fluffy木桶", Material.LODESTONE, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.IRON_BLOCK)),
+        MASSIVE(276480000, "&5超大 Fluffy木桶", Material.CRYING_OBSIDIAN, SlimefunItems.REINFORCED_PLATE, new ItemStack(Material.OBSIDIAN)),
+        BOTTOMLESS(1728000000, "&c無底洞 Fluffy木桶", Material.RESPAWN_ANCHOR, SlimefunItems.BLISTERING_INGOT_3, SlimefunItems.REINFORCED_PLATE);
 
         private final int defaultSize;
         private final String displayName;

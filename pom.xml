@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.ncbpfluffybear</groupId>
     <artifactId>FluffyMachines</artifactId>
-    <version>1.0.0</version>
+    <version>Efina 1.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -153,9 +153,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.Slimefun-Addon-Community</groupId>
+            <groupId>com.github.SlimeTraditionalTranslation</groupId>
             <artifactId>extrautils</artifactId>
-            <version>73e76ac06c</version>
+            <version>33c4e0d</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.SlimeTraditionalTranslation</groupId>
+            <artifactId>dough</artifactId>
+            <version>7142669</version>
         </dependency>
     </dependencies>
 </project>

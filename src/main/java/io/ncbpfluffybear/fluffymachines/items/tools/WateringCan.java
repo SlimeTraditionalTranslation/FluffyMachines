@@ -162,7 +162,7 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
 
                         if (BlockStorage.hasBlockInfo(b)) {
                             if (exoticGardenSuccessChance.getValue() == 0) {
-                                Utils.send(p, "&cYou can not water Exotic Garden plants!");
+                                Utils.send(p, "&c你不能對異國情調花園的植物澆水!");
                                 return;
                             }
                             if (random < exoticGardenSuccessChance.getValue()) {
@@ -204,7 +204,7 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
         if (updateType == 1) {
 
             if (usesLeft == 0) {
-                Utils.send(p, "&cYou need to refill your Watering Can!");
+                Utils.send(p, "&c你必須重新裝滿灑水壺!");
                 return false;
             }
             p.playSound(p.getLocation(), Sound.ENTITY_DROWNED_AMBIENT_WATER, 0.5F, 1F);
@@ -212,12 +212,12 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
 
         } else if (updateType == 2) {
             p.playSound(p.getLocation(), Sound.ENTITY_DROWNED_DEATH_WATER, 0.5F, 1F);
-            Utils.send(p, "&aYou have filled your Watering Can");
+            Utils.send(p, "&a你已經裝滿你的灑水壺");
             usesLeft = can.getUses().getValue();
 
         } else if (updateType == 3) {
             if (usesLeft == 0) {
-                Utils.send(p, "&cYou need to refill your Watering Can!");
+                Utils.send(p, "&c你必須重新裝滿灑水壺!");
                 return false;
             }
             usesLeft = 0;
@@ -226,7 +226,7 @@ public class WateringCan extends SimpleSlimefunItem<ItemUseHandler> implements C
             p.sendMessage("Error");
         }
 
-        lore.set(USE_INDEX, ChatColors.color("&aUses Left: &e" + usesLeft));
+        lore.set(USE_INDEX, ChatColors.color("&a剩餘次數: &e" + usesLeft));
         meta.setLore(lore);
         meta.getPersistentDataContainer().set(usageKey, PersistentDataType.INTEGER, usesLeft);
         item.setItemMeta(meta);

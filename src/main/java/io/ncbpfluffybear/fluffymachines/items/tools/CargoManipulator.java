@@ -120,7 +120,7 @@ public class CargoManipulator extends SimpleSlimefunItem<ItemUseHandler> impleme
 
         storedFilters.put(p, new Pair<>(nodeData, filterItems)); // Save cargo slots into map
 
-        Utils.send(p, "&aYour " + SlimefunItem.getById((String) nodeData.get("id")).getItemName() + " &ahas been copied.");
+        Utils.send(p, "&a你的 " + SlimefunItem.getById((String) nodeData.get("id")).getItemName() + " &a已被複製.");
         createParticle(parent, Color.fromRGB(255, 252, 51)); // Bright Yellow
     }
 
@@ -133,7 +133,7 @@ public class CargoManipulator extends SimpleSlimefunItem<ItemUseHandler> impleme
 
         // No data saved yet
         if (nodeSettings == null) {
-            Utils.send(p, "&cYou have not copied a cargo node yet.");
+            Utils.send(p, "&c你還沒有複製過物流節點.");
             return;
         }
 
@@ -142,8 +142,8 @@ public class CargoManipulator extends SimpleSlimefunItem<ItemUseHandler> impleme
 
         SlimefunItemStack savedNodeType = (SlimefunItemStack) SlimefunItem.getById((String) jsonData.get("id")).getItem();
         if (savedNodeType != nodeType) {
-            Utils.send(p, "&cYou copied a " + savedNodeType.getDisplayName() +
-                    " &cbut you are trying to modify a " + nodeType.getDisplayName() + "&c!");
+            Utils.send(p, "&c你複製了 " + savedNodeType.getDisplayName() +
+                    " &c但你正在嘗試修改 " + nodeType.getDisplayName() + "&c!");
             createParticle(child, Color.RED);
             return;
         }
@@ -175,7 +175,7 @@ public class CargoManipulator extends SimpleSlimefunItem<ItemUseHandler> impleme
                 // Check if item not in inventory
                 if (!SlimefunUtils.containsSimilarItem(playerInventory, filterItems[i], true)) {
                     createParticle(child, Color.AQUA);
-                    Utils.send(p, "&cYou do not have " + Utils.getViewableName(filterItems[i]) + "&c. Skipping this item.");
+                    Utils.send(p, "&c你身上沒有 " + Utils.getViewableName(filterItems[i]) + "&c. 跳過這個物品.");
                     continue;
                 }
 
@@ -194,7 +194,7 @@ public class CargoManipulator extends SimpleSlimefunItem<ItemUseHandler> impleme
 
         // Force menu update
         BlockStorage.getStorage(child.getWorld()).reloadInventory(child.getLocation());
-        Utils.send(p, "&aYour " + savedNodeType.getDisplayName() + " &ahas been pasted.");
+        Utils.send(p, "&a你的 " + savedNodeType.getDisplayName() + " &a已被貼上.");
         createParticle(child, Color.LIME);
 
     }
@@ -227,7 +227,7 @@ public class CargoManipulator extends SimpleSlimefunItem<ItemUseHandler> impleme
             // Force update
             BlockStorage.getStorage(node.getWorld()).reloadInventory(node.getLocation());
 
-            Utils.send(p, "&aThe selected Cargo Node has been cleared");
+            Utils.send(p, "&a所選擇的物流節點設定已被清除");
             createParticle(node, Color.fromRGB(255, 152, 56)); // Light orange
         }
     }

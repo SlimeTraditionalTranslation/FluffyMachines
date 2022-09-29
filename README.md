@@ -1,75 +1,83 @@
-# FluffyMachines
+# Fluffy機器
 
-These are some thrown together machines made by me for fun :)
-I pretty much add whatever comes to mind, is suggested by me, or other addons don't want to add.
+這些是我把它們湊在一起的機器 :)
+我幾乎增加了所有我所想到的,或是其他附加不想添加的.
 
-Custom item settings can be changed in `plugins/Slimefun/Items.yml`
+自訂義物品設置可以在`plugins/Slimefun/Items.yml`內進行更改
 
-## Machines
-**Auto Crafting Table**: Automatically crafts vanilla recipes
+> 此為**非官方**版本, 請勿在該作者問題追蹤內回報! <br>
+> [原作連結](https://github.com/NCBPFluffyBear/FluffyMachines) | [非官方Discord](https://discord.gg/GF4CwjFXT9)
 
-**Auto Armor Forge**: Automatically crafts Armor Forge recipes
+| 非官方繁體中文版 | 官方英文版 |
+| -------- | -------- |
+| 點下方圖片下載 | 點下方圖片下載 |
+| [![Build Status](https://xMikux.github.io/builds/SlimeTraditionalTranslation/FluffyMachines/master/badge.svg)](https://xMikux.github.io/builds/SlimeTraditionalTranslation/FluffyMachines/master) | [![Build Status](https://thebusybiscuit.github.io/builds/NCBPFluffyBear/FluffyMachines/master/badge.svg)](https://thebusybiscuit.github.io/builds/NCBPFluffyBear/FluffyMachines/master) |
 
-**Auto Magic Workbench**: Automatically crafts Magic Workbench recipes
+## 機器
+**自動工作台**: 自動製作原版配方
 
-**Auto Ancient Altar**: Automatically crafts Ancient Altar recipes
+**自動盔甲鍛造台**: 自動製作盔甲鍛造台的配方
 
-**Auto Table Saw**: Automatically crafts Table Saw recipes
+**自動魔法合成台**: 自動製作魔法合成台配方
 
-**Water Sprinkler**: Electric sprinkler that grows crops in a 2 block radius
+**自動古代祭壇**: 自動製作古代祭壇配方
 
-**Backpack Loader**: Moves items from inventory to backpack
+**自動鋸木機**: 自動製作鋸木機配方
 
-**Backpack Unloader**: Empties backpack into inventory
+**灑水器**: 電力灑水器可以在兩格半徑範圍內灌溉農作物
 
-**Advanced Auto Disenchanter & Ancient Book**: Allows players to disenchant specific enchants from items. Requires an Ancient Book to operate.
+**背包裝載器**: 將物品從庫存移至背包內
 
-**Electric Dust Fabricator**: Turns cobblestone into sifted ore
+**背包卸載器**: 清空背包內的內容物
 
-**Electric Dust Recycler**: Turns eight of the same dust into one sifted ore
+**高級自動退魔器 & 古代書籍**: 允許玩家從物品上拆下特定的附魔. 需要古代書籍來運作.
 
-**Advanced Charging Bench & ACB Upgrade Card**: A charging bench which can be upgraded using upgrade cards.
+**電動粉工廠**: 將鵝卵石變成篩礦
 
-## Generators
-**Crank Generator**: Multiblock machine that generates power when clicked
+**電動粉回收機**: 將八個相同的粉轉化成一個篩礦
 
-## Items
-**Watering Can**: Waters plants and trees to speed up their growth
+**進階充電台 & 進階充電升級卡**: 可升級式充電台.
 
-**Helicopter Hat**: Allows you to float upwards when sneaking
+## 發電機
+**曲柄發電機**: 點擊時發電的多重方塊機器
 
-**Fireproof Rune**: Drop this on your items to prevent them from burning
+## 物品
+**灑水壺**: 給植物和樹木灌溉澆水以加速生長
 
-**Dolly**: Allows players to pick up chests and place them back down elsewhere, while retaining their inventories.
+**直升機帽**: 蹲下時可以向上浮動
 
-## Tools
-**Upgraded Explosive Pickaxe & Upgraded Explosive Shovel**: 5x5 variants of the default explosive tools, and break 5 blocks in front of the player instead of 2 blocks all around. By default, these tools trigger other plugins that listen to block breaks, i.e. McMMO (Players get xp for every block broken). These features can be toggled in Items.yml.
+**古代魔法符文 防火**: 將此符文放在掉落物品上來防止它們防火
 
-**Upgraded Lumber Axe**: Breaks all logs within 2 blocks of each other, as opposed to adjacent blocks that the default lumber axe targets. Intended to be used for strange trees like acacia and jungle, and even custom trees.
+**搬運器**: 允許玩家搬起箱子並將箱子放置其他地方,同時保留內容物.
 
-**Scythe**: Breaks 5 crops per swing
+## 工具
+**升級版爆炸鎬 & 升級版爆炸鏟**: 默認的爆炸工具為5x5,挖掘玩家前面五格方塊,而不是周圍兩格方塊. 默認情況下,這些工具觸發將會破壞其它插件的方塊偵聽, 例如 McMMO (當玩家破壞每個方塊會獲得經驗). 這些功能可以在Items.yml內切換.
 
-**Wrench**: Quickly breaks Slimefun cargo and energy components.
+**升級版伐木斧**: 與默認伐木斧瞄準的相鄰方塊相反,將所有原木彼此分開2個方塊. 旨在用於相思樹和叢林等奇特的樹木，甚至自訂義樹木.
 
-**Paxel**: A pickaxe, axe, and shovel all in one.
+**鐮刀**: 每次揮動收割5個農作物
 
-## Misc
-**Ender Chest Extraction Node**: Moves items from ender chest to a chest
+**扳手**: 快速破壞黏液科技的物流與能源組件.
 
-**Ender Chest Insertion Node**: Moves items from a chest to an ender chest
+**鎬尖斧**: 結合鎬子, 斧頭和鏟子在一個工具.
 
-*The extraction and insertion nodes do no stack items in inventories, that costs more performance and can be handled by cargo.
+## 雜項
+**終界箱提取節點**: 將物品從終界箱移動至箱子
 
-**Foundry & Superheated Furnace**: Allows the storage of dusts, and can be instantly converted to and from their ingot form.
+**終界箱存放節點**: 將物品從箱子移動至終界箱
 
-**Barrels**: Storage containers that store one type of item each
+*提取節點與存放節點不會存在庫存中,這將會提高性能並可以用物流處理.
 
-**Warp Pad & Warp Pad Configurator**: Short distance teleportation pads
+**鑄造廠 & 超級炙熱熔爐**: 允許儲存粉,並可以立即將其轉化成錠.
 
-**Alternate Elevator Plate**: Functions the same as Slimefun's Elevator Plates, but it uses a Chest GUI. Can be used for cosmetic effect, of if your server does not support elevators when a player is muted, this will work.
+**木桶**: 可存儲多個相同的物品
 
-**Portable Charger**: Multiple tiered handheld charders that allow players to charge items anywhere
+**傳送板 & 傳送板配置器**: 短距離傳送板
+
+**備用電梯板**: 功能與Slimefun的電梯板相同,但使用箱子介面. 可以用於裝飾效果, 如果你的伺服器不支持當玩家被禁言時使用電梯, 這則可使用.
+
+**隨身充電器**: 多等級隨身充電器,允許讓玩家在任何地方充電
 
 ## FAQ
-**Can cargo be used on the Foundry?**
-*Yes, but you can not place it directly on the Superheated Furnace. Place down a chest in its place, put the cargo on the chest, and then replace the chest wth the Superheated Furnace.*
+**可以在鑄造廠上使用物流嗎?**
+**可以, 但是你不能將其直接放置在超級炙熱熔爐上. 將箱子放到原處, 並將物流放在箱子上, 然後用超級炙熱熔爐替換箱子.*
