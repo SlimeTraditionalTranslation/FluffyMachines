@@ -355,7 +355,7 @@ public class SuperheatedFurnace extends NonHopperableBlock {
             setBlockInfo(b, "type", null);
             inv.replaceExistingItem(INPUT_INDICATOR, new CustomItemStack(new ItemStack(Material.CHEST), "&6融化的粉: &e0 &7(0%)", "&b類型: 無",  "&7組: 0"));
         } else {
-            inv.replaceExistingItem(INPUT_INDICATOR, new CustomItemStack(new ItemStack(Material.CHEST), "&6融化的粉: &e" + stored + " &7(" + Double.parseDouble(stored) / MAX_STORAGE + "%)", "&b類型: " + type, "&7組: " + Double.parseDouble(stored) / 64));
+            inv.replaceExistingItem(INPUT_INDICATOR, new CustomItemStack(new ItemStack(Material.CHEST), "&6融化的粉: &e" + stored + " &7(" + Double.parseDouble(stored) / MAX_STORAGE * 100 + "%)", "&b類型: " + type, "&7組: " + Double.parseDouble(stored) / 64));
 
         }
         inv.replaceExistingItem(DUST_INDICATOR, new CustomItemStack(new ItemStack(Material.GUNPOWDER), "&6可用的粉: &e" + stored, "&a> &e左鍵&a點擊來拿取1個", "&a> &e右鍵&a點擊來拿取64個"));
